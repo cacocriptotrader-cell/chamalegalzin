@@ -1,0 +1,26 @@
+Docfin deploy marker
+
+Parser version:
+dirpf-parser-no-worker-2026-05-16-02
+
+Cache buster:
+docfin-cache-buster-2026-05-16-02
+
+Updated at:
+2026-05-15 22:35 America/Sao_Paulo
+
+Upload exactly these files from this folder:
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/package.json
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/buildInfo.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/dirpfPdfParser.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/components/AppShell.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/patrimonio.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/DEPLOY_MARKER_DOCFIN.txt
+
+Expected checks:
+- package.json contains "pdfjs-dist": "4.10.38"
+- dirpfPdfParser.ts contains DIRPF_PARSER_VERSION
+- dirpfPdfParser.ts does not contain pdf.worker
+- patrimonio.tsx renders Parser dirpf-parser-no-worker-2026-05-16-02
+- patrimonio.tsx renders Build docfin-cache-buster-2026-05-16-02
+- AppShell.tsx renders docfin-cache-buster-2026-05-16-02

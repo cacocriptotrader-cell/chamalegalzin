@@ -1,0 +1,39 @@
+Docfin deploy marker
+
+Parser version:
+dirpf-parser-hitl-review-2026-05-16-11
+
+Cache buster:
+docfin-cache-buster-hitl-2026-05-16-04
+
+OAuth redirect fix:
+Google login must not redirect back to lovable.app. login.tsx forces lovable.app origins to https://blank-canvas-page-94b35c36.vercel.app/
+
+PDF.js mode:
+legacy worker via pdfjs-dist/legacy/build/pdf.worker.mjs?url
+
+Updated at:
+2026-05-16 18:50 America/Sao_Paulo
+
+Upload exactly these files from this folder:
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/package.json
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/buildInfo.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/dirpfPdfParser.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/components/AppShell.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/login.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/patrimonio.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/DEPLOY_MARKER_DOCFIN.txt
+
+Expected checks:
+- package.json contains "pdfjs-dist": "4.10.38"
+- dirpfPdfParser.ts contains DIRPF_PARSER_VERSION
+- dirpfPdfParser.ts imports pdfjs-dist/legacy/build/pdf.worker.mjs?url
+- patrimonio.tsx renders Parser dirpf-parser-hitl-review-2026-05-16-11
+- patrimonio.tsx renders Build docfin-cache-buster-hitl-2026-05-16-04
+- AppShell.tsx renders docfin-cache-buster-hitl-2026-05-16-04
+- login.tsx contains PRODUCTION_APP_ORIGIN = "https://blank-canvas-page-94b35c36.vercel.app"
+
+HITL import flow:
+- patrimonio.tsx does not persist parsed DIRPF items immediately
+- parsed assets/liabilities are held in draft review state
+- user must click "Confirmar e Salvar Patrimônio" to update the store

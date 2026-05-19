@@ -1,0 +1,83 @@
+Docfin deploy marker
+
+Parser version:
+dirpf-parser-quantity-price-fallback-2026-05-17-04
+
+Cache buster:
+docfin-cache-buster-calendar-smart-filters-2026-05-17-15
+
+OAuth redirect fix:
+Google login must not redirect back to lovable.app. login.tsx forces lovable.app origins to https://blank-canvas-page-94b35c36.vercel.app/
+
+PDF.js mode:
+legacy worker via pdfjs-dist/legacy/build/pdf.worker.mjs?url
+
+Updated at:
+2026-05-17 14:45 America/Sao_Paulo
+
+Upload exactly these files from this folder:
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/package.json
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/buildInfo.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/betaSeed.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/accountingCsv.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/dirpfPdfParser.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/expenseImportParser.ts
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/lib/store.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/styles.css
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/components/AppShell.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/components/QuickCaptureModal.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/components/ExpenseDashboard.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/components/FatorRMonitor.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/login.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/__root.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/index.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/novo-registro.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/caixa.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/calendario.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/novo-plantao.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/patrimonio.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/src/routes/vida-financeira.tsx
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/DEPLOY_MARKER_DOCFIN.txt
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/BETA_FEEDBACK_REPORT.md
+/Users/pedropaulo/Downloads/blank-canvas-page-94b35c36-main-6/1_YEAR_DISCOVERY_REPORT.md
+
+Expected checks:
+- package.json contains "pdfjs-dist": "4.10.38"
+- dirpfPdfParser.ts contains DIRPF_PARSER_VERSION
+- dirpfPdfParser.ts imports pdfjs-dist/legacy/build/pdf.worker.mjs?url
+- patrimonio.tsx renders Parser dirpf-parser-quantity-price-fallback-2026-05-17-04
+- patrimonio.tsx renders Build docfin-cache-buster-calendar-smart-filters-2026-05-17-15
+- AppShell.tsx renders docfin-cache-buster-calendar-smart-filters-2026-05-17-15
+- index.tsx renders the Dashboard Cockpit with Operação, Resultado líquido do mês, Patrimônio and Quick Actions
+- login.tsx contains PRODUCTION_APP_ORIGIN = "https://blank-canvas-page-94b35c36.vercel.app"
+- styles.css contains DocFin Dark Premium tokens: background #1a1a1a, card #262626, primary #deff9a
+
+HITL import flow:
+- patrimonio.tsx does not persist parsed DIRPF items immediately
+- parsed assets/liabilities are held in draft review state
+- user must click "Confirmar e Salvar Patrimônio" to update the store
+- review table tracks only current value, not prior-year value
+- fuzzy OCR current value is the largest money value found in the item block
+- parser strips over-precision average prices like R$ 97,0355515147441 before choosing currentValue
+- cockpit top-right widget focuses on Resultado Consolidado = Líquido PJ + Líquido PF
+- parser calculates Renda Variável fallback from QUANTIDADE x PRECO before relying only on largest money value
+- new shift registration supports Veículo Pessoal vs Transporte Privado with direct cost override in computeShift
+- vida-financeira renders ExpenseDashboard with Adicionar Despesa manual entry, CSV/OFX import review and category chart
+- console exposes window.inject90DaysBetaState() to replace localStorage docfin.store.v2 with a 90-day beta dataset
+- BETA_FEEDBACK_REPORT.md contains first-person R3 anesthesiology beta feedback
+- store supports recordStatus draft/consolidated without overwriting shift operational status
+- Dashboard renders Quick Capture and Pendências inbox
+- financial engines ignore draft records until consolidation
+- AppShell Novo registro opens QuickCaptureModal instead of navigating to /novo-registro
+- mobile bottom nav Novo opens the same QuickCaptureModal
+- Inbox pendências opens ConsolidationModal instead of inline/one-click approval
+- Consolidation requires regime fiscal, payment forecast, gross value and optional settlement adjustment before recordStatus consolidated
+- computeShift deducts settlementAdjustment from projected net without changing tax calculation
+- console exposes window.inject1YearProductionState() to replace localStorage docfin.store.v2 with a 12-month production stress dataset
+- 1_YEAR_DISCOVERY_REPORT.md contains the simulated discovery interview with Thais and her accountant
+- fechamento.tsx renders "Exportar para o Contador (.CSV)"
+- accountingCsv.ts exports generateAccountingCSV and excludes recordStatus draft from the CSV
+- Dossiê Fiscal renders a Fator R audit trail with "Registros draft não entram nesta base."
+- calendario.tsx renders smart filter pills: Todos, Pendências / Drafts and A Receber
+- calendario.tsx shows draft shifts visually without changing financial engines
+- calendario.tsx fades resolved past events and highlights the current week focus strip

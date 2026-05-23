@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="112" fill="#050505"/>
+  <rect x="42" y="42" width="428" height="428" rx="94" fill="#0A0D14" stroke="#0F766E" stroke-width="6"/>
+  <text x="98" y="280" fill="#F3F4F6" font-family="Inter, Arial, sans-serif" font-size="116" font-weight="800" letter-spacing="-6">Doc</text>
+  <text x="284" y="280" fill="#0F766E" font-family="Inter, Arial, sans-serif" font-size="116" font-weight="800" letter-spacing="-6">Fin</text>
+  <path d="M286 320C326 345 384 343 422 313" stroke="#0F766E" stroke-width="16" stroke-linecap="round"/>
+</svg>
